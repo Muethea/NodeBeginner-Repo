@@ -8,19 +8,6 @@ const path = require('path')
 
 const pathBase = path.join(__dirname, 'template')
 
-const checkAuth = function (req, res, next) {
-  req.authStatus = true
-
-  if (req.authStatus) {
-    console.log('Esta logado')
-    next()
-  } else {
-    console.log('Nao esta logado')
-  }
-}
-
-app.use(checkAuth)
-
 app.get('/', (req, res) => {
   res.sendFile(`${pathBase}/index.html`)
 })
