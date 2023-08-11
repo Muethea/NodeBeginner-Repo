@@ -1,17 +1,19 @@
 const express = require('express')
-const exphbs = require('express-handlebars')
 
 const app = express()
 
-app.engine('handlebars', exphbs())
-app.set('view engine', 'handlebars')
+const port = 3000
 
-// ... outras configurações e rotas ...
+const path = require('path')
 
-app.get('/', (req, res)=>{
-  res.render('home', {layout: false})
+const pathBase = path.join(__dirname, 'template')
+
+
+
+app.get('/', (req, res) => {
+  res.sendFile(`${pathBase}/index.html`)
 })
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000')
+app.listen(port, () => {
+  console.log(`Server running port ${port}`)
 })
