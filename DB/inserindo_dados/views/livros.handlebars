@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livros Disponíveis</title>
+</head>
+
+<body>
+
+  <h1>Livros disponíveis</h1>
+
+  {{#each livros}}
+  <div>
+    <p>ID: {{this.idlivros}}</p>
+    <p>Nome: {{this.nome}}</p>
+    <p>Autor: {{this.autor}}</p>
+    <p>Páginas: {{this.page_count}}</p>
+  </div>
+  {{/each}}
+
+</body>
+
+</html>
