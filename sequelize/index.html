@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cronômetro Decrementado</title>
+</head>
+<body>
+  <h1>Cronômetro</h1>
+  <p id="cronometro">01:00</p>
+  <button id="iniciar">Iniciar Prova</button>
+
+  <script>
+    // Função para atualizar o cronômetro
+    function atualizarCronometro(tempo) {
+      const minutos = Math.floor(tempo / 60);
+      const segundos = tempo % 60;
+      const tempoFormatado = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+      document.getElementById("cronometro").textContent = tempoFormatado;
+    }
+
+    document.getElementById("iniciar").addEventListener("click", function() {
+      let tempoInicial = 60; // 1 minuto
+      atualizarCronometro(tempoInicial);
+
+      const interval = setInterval(function() {
+        tempoInicial--;
+        atualizarCronometro(tempoInicial);
+
+        if (tempoInicial === 0) {
+          clearInterval(interval);
+          document.getElementById("cronometro").textContent = "Tempo esgotado! A prova começou.";
+        }
+      }, 1000); // Atualizar a cada 1 segundo
+    });
+  </script>
+</body>
+</html>
